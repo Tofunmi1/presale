@@ -152,7 +152,7 @@ contract Presale is ReentrancyGuard, Ownable {
         require(amountSentInUsd >= minPurchase, "minimum buy not met");
         //$0.015 worth of bnb gets 1 $sfp
         // weiAmount.mul(_rate).div(10 ** _tokenDecimals);
-        return uint256(amountSentInUsd / _rate);
+        return uint256(amountSentInUsd).div(_rate).mul(10 ** 18);
     }
 
     function _forwardFunds() internal {
